@@ -15,12 +15,11 @@ namespace MiPrimeraApi2.Controllers
             return new List<Usuario>();
         }
 
-
         [HttpGet("{NombreUsuario}/{Contraseña}")]
-        public Usuario UsuarioConContraseña(string NombreUsuario, string Contraseña)
+        public bool UsuarioConContraseña(string NombreUsuario, string Contraseña)
         {
-            Usuario usuario = UsuarioHandler.UsuarioConContraseña(NombreUsuario, Contraseña);
-            return new Usuario();
+            bool Acceso = UsuarioHandler.UsuarioConContraseña(NombreUsuario, Contraseña);
+            return Acceso;
         }
 
         [HttpPut]

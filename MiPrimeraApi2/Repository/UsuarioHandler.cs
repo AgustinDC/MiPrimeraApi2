@@ -39,11 +39,11 @@ namespace MiPrimeraApi2.Repository
             return Resultado;
         }
 
-        public static Usuario UsuarioConContraseña(string user,string pass)
+        public static bool UsuarioConContraseña(string user,string pass)
         {
             String sqlQuery = $"SELECT * FROM Usuario WHERE NombreUsuario = '{user}' AND Contraseña = '{pass}'";
 
-            Usuario Resultado = new Usuario();
+            bool Resultado = false;
             using (SqlConnection sqlConnection = new SqlConnection(ConnectionString))
             {
                 using (SqlCommand sqlCommand = new SqlCommand(sqlQuery, sqlConnection))
@@ -66,6 +66,7 @@ namespace MiPrimeraApi2.Repository
                                 Usuario.Mail = sqlreader["Mail"].ToString();
 
                             }
+                            Resultado = true;
                         }
                     }
                 }
